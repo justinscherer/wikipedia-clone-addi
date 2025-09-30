@@ -12,7 +12,13 @@ export function FFTPreview() {
     <div className="w-[min(700px,calc(100vw-40px))] h-[min(300px,70vh)] bg-card border border-border rounded-lg shadow-lg overflow-hidden">
       {/* Header */}
       <div className="px-4 py-2 border-b border-border">
-        <h3 className="text-lg font-bold">Fast Fourier transform (FFT)</h3>
+        <h3 
+          className="text-lg font-bold cursor-pointer hover:text-primary transition-colors"
+          onClick={() => openFFTArticle()}
+          title="Click to open FFT article in new tab"
+        >
+          Fast Fourier transform (FFT)
+        </h3>
       </div>
       
       {/* Main content - landscape layout */}
