@@ -9,7 +9,7 @@ export function FFTPreview() {
   }
 
   return (
-    <div className="w-[min(700px,calc(100vw-40px))] h-[min(300px,70vh)] bg-card border border-border rounded-lg shadow-lg overflow-hidden">
+    <div className="w-[min(700px,calc(100vw-40px))] min-h-[400px] max-h-[min(500px,80vh)] bg-card border border-border rounded-lg shadow-lg overflow-hidden">
       {/* Header */}
       <div className="px-4 py-2 border-b border-border">
         <h3 
@@ -22,14 +22,14 @@ export function FFTPreview() {
       </div>
       
       {/* Main content - landscape layout */}
-      <div className="flex h-[calc(100%-48px)]">
+      <div className="flex min-h-[352px]">
         {/* Left side - Image and introduction */}
-        <div className="w-1/2 p-4 border-r border-border overflow-hidden">
+        <div className="w-1/2 p-4 border-r border-border flex flex-col">
           <p className="text-sm mb-3 leading-relaxed">
             A fast Fourier transform (FFT) is an algorithm that computes the discrete Fourier transform (DFT) of a sequence, or its inverse (IDFT). A Fourier transform converts a signal from its original domain (often time or space) to a representation in the frequency domain and vice versa.
           </p>
           
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-auto">
             <img 
               src={fftDiagram} 
               alt="FFT Algorithm Diagram" 
@@ -39,9 +39,9 @@ export function FFTPreview() {
         </div>
         
         {/* Right side - Tappable sections */}
-        <div className="w-1/2 p-4 space-y-3 overflow-y-auto min-w-0 flex flex-col">
+        <div className="w-1/2 p-4 space-y-3 min-w-0 flex flex-col">
           <div 
-            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors flex-1 min-h-0"
+            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors"
             onClick={() => openFFTArticle()}
           >
             <h4 className="font-semibold text-sm mb-2 text-primary">Introduction</h4>
@@ -51,7 +51,7 @@ export function FFTPreview() {
           </div>
           
           <div 
-            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors flex-1 min-h-0"
+            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors"
             onClick={() => openFFTArticle('Applications')}
           >
             <h4 className="font-semibold text-sm mb-2 text-primary">Applications</h4>
