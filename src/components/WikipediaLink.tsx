@@ -19,13 +19,31 @@ export function WikipediaLink({ href, children, previewContent, className = '' }
     const cursorY = event.clientY
     const cursorX = event.clientX
     
+    // Preview card estimated width (from CSS: min(700px, 90vw))
+    const previewWidth = Math.min(700, viewportWidth * 0.9)
+    const previewHeight = Math.min(300, viewportHeight * 0.7)
+    
     // Determine vertical position: if cursor is in top half, show below
     const isTopHalf = cursorY < viewportHeight / 2
     const newSide = isTopHalf ? 'bottom' : 'top'
     
-    // Determine horizontal alignment: if cursor is in right half, align to left
-    const isRightHalf = cursorX > viewportWidth / 2
-    const newAlign = isRightHalf ? 'end' : 'start'
+    // Determine horizontal alignment based on available space
+    // Check if there's enough space to the right for the preview
+    const spaceToRight = viewportWidth - cursorX
+    const spaceToLeft = cursorX
+    
+    let newAlign: 'start' | 'center' | 'end'
+    
+    if (spaceToRight >= previewWidth + 20) {
+      // Enough space to the right, align to start (left edge at cursor)
+      newAlign = 'start'
+    } else if (spaceToLeft >= previewWidth + 20) {
+      // Not enough space to right, but enough to left, align to end
+      newAlign = 'end'
+    } else {
+      // Not enough space on either side, center it
+      newAlign = 'center'
+    }
     
     setSide(newSide)
     setAlign(newAlign)
@@ -70,7 +88,7 @@ export function WikipediaLink({ href, children, previewContent, className = '' }
         avoidCollisions={true}
         sideOffset={8}
         alignOffset={0}
-        collisionPadding={20}
+        collisionPadding={40}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={handleMouseLeave}
       >
