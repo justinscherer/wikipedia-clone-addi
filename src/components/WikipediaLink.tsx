@@ -38,7 +38,13 @@ export function WikipediaLink({ href, children, previewContent, className = '' }
           {children}
         </a>
       </HoverCardTrigger>
-      <HoverCardContent className="preview-card" side="top" align="start">
+      <HoverCardContent 
+        className="preview-card" 
+        side="top" 
+        align="start"
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+      >
         {previewContent}
       </HoverCardContent>
     </HoverCard>
