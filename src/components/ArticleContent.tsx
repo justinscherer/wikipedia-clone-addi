@@ -1,3 +1,4 @@
+import React from 'react'
 import { WikipediaLink } from './WikipediaLink'
 import { FFTPreview } from './FFTPreview'
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import { WikipediaHeader } from './components/WikipediaHeader'
 import { ArticleNavigation } from './components/ArticleNavigation'
 import { ArticleContent } from './components/ArticleContent'

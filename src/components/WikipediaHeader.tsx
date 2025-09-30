@@ -1,3 +1,4 @@
+import React from 'react'
 import { MagnifyingGlass, List, User, Globe } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'

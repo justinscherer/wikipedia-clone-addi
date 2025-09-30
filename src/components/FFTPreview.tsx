@@ -1,3 +1,5 @@
+import React from 'react'
+
 export function FFTPreview() {
   return (
     <div className="preview-card">
