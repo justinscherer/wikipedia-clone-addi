@@ -39,9 +39,9 @@ export function FFTPreview() {
         </div>
         
         {/* Right side - Tappable sections */}
-        <div className="w-1/2 p-4 space-y-3 overflow-hidden min-w-0">
+        <div className="w-1/2 p-4 space-y-3 overflow-y-auto min-w-0 flex flex-col">
           <div 
-            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors h-[calc(50%-6px)] overflow-hidden"
+            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors flex-1 min-h-0"
             onClick={() => openFFTArticle()}
           >
             <h4 className="font-semibold text-sm mb-2 text-primary">Introduction</h4>
@@ -51,7 +51,7 @@ export function FFTPreview() {
           </div>
           
           <div 
-            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors h-[calc(50%-6px)] overflow-hidden"
+            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors flex-1 min-h-0"
             onClick={() => openFFTArticle('Applications')}
           >
             <h4 className="font-semibold text-sm mb-2 text-primary">Applications</h4>
