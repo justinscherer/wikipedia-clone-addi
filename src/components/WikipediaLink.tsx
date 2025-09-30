@@ -17,42 +17,36 @@ export function WikipediaLink({ href, children, previewContent, className = '' }
     const viewportHeight = window.innerHeight
     const viewportWidth = window.innerWidth
     const cursorY = event.clientY
-    const cursorX = event.clientX
     
-    // Preview card estimated width (from CSS: min(700px, 90vw))
-    const previewWidth = Math.min(700, viewportWidth * 0.9)
+    // Preview card width calculation (from CSS: min(700px, calc(100vw - 40px)))
+    const previewWidth = Math.min(700, viewportWidth - 40)
     const previewHeight = Math.min(300, viewportHeight * 0.7)
     
-    // Add padding for safe positioning
+    // Collision padding to ensure the card stays within viewport
     const padding = 20
     
     // Determine vertical position: if cursor is in top half, show below
     const isTopHalf = cursorY < viewportHeight / 2
     const newSide = isTopHalf ? 'bottom' : 'top'
     
-    // Determine horizontal alignment based on cursor position
-    // For start alignment: preview left edge aligns with trigger left edge
-    // For center alignment: preview center aligns with trigger center  
-    // For end alignment: preview right edge aligns with trigger right edge
-    
+    // Get trigger element bounds
     const triggerRect = (event.target as HTMLElement).getBoundingClientRect()
     const triggerCenter = triggerRect.left + triggerRect.width / 2
     const triggerLeft = triggerRect.left
-    const triggerRight = triggerRect.right
     
     let newAlign: 'start' | 'center' | 'end'
     
-    // Check if centering the preview would keep it in bounds
+    // Calculate positions for each alignment option
     const centeredLeft = triggerCenter - previewWidth / 2
-    const centeredRight = triggerCenter + previewWidth / 2
+    const centeredRight = centeredLeft + previewWidth
+    const startRight = triggerLeft + previewWidth
     
+    // Choose alignment that keeps preview within viewport bounds
     if (centeredLeft >= padding && centeredRight <= viewportWidth - padding) {
       newAlign = 'center'
-    } else if (triggerLeft + previewWidth <= viewportWidth - padding) {
-      // Try start alignment (left edge of trigger)
+    } else if (startRight <= viewportWidth - padding) {
       newAlign = 'start'
     } else {
-      // Use end alignment (right edge of trigger)
       newAlign = 'end'
     }
     
@@ -93,16 +87,17 @@ export function WikipediaLink({ href, children, previewContent, className = '' }
         </a>
       </HoverCardTrigger>
       <HoverCardContent 
-        className="p-0 border-0 shadow-lg" 
+        className="p-0 border-0 shadow-lg w-auto" 
         side={side}
         align={align}
         avoidCollisions={true}
         sideOffset={8}
         alignOffset={0}
         collisionPadding={20}
-        collisionBoundary={typeof window !== 'undefined' ? document.body : undefined}
+        collisionBoundary={typeof window !== 'undefined' ? document.documentElement : undefined}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={handleMouseLeave}
+        style={{ maxWidth: 'min(700px, calc(100vw - 40px))' }}
       >
         {previewContent}
       </HoverCardContent>
