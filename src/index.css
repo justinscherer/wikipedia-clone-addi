@@ -1,1 +1,164 @@
-/* This is where custom CSS goes */
+@import 'tailwindcss';
+@import "tw-animate-css";
+
+@layer base {
+  * {
+    @apply border-border
+  }
+}
+
+:root {
+  /* Wikipedia-inspired color scheme */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.15 0 0);
+
+  --card: oklch(0.98 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+
+  /* Wikipedia blue for links and primary actions */
+  --primary: oklch(0.45 0.15 240);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.15 0 0);
+  --accent: oklch(0.35 0.18 240);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.45 0.15 240);
+
+  --radius: 0.375rem;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 1.5);
+  --radius-xl: calc(var(--radius) * 2);
+  --radius-2xl: calc(var(--radius) * 3);
+  --radius-full: 9999px;
+}
+
+/* Wikipedia-style typography */
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  @apply bg-background text-foreground;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+/* Wikipedia link styles */
+.wiki-link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.wiki-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* Preview card styles */
+.preview-card {
+  max-width: 400px;
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.preview-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+
+.preview-card h4 {
+  font-size: 16px;
+  margin: 12px 0 6px 0;
+  color: var(--primary);
+}
+
+.preview-card p {
+  margin-bottom: 12px;
+}
+
+/* Wikipedia-style sidebar */
+.wiki-sidebar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* Article layout */
+.wiki-article {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.wiki-article h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+  border-bottom: 3px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.wiki-article h2 {
+  font-size: 24px;
+  margin: 32px 0 16px 0;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+
+.wiki-article h3 {
+  font-size: 20px;
+  margin: 24px 0 12px 0;
+}
+
+.wiki-article p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.wiki-article ul, .wiki-article ol {
+  margin: 16px 0 16px 32px;
+}
+
+.wiki-article li {
+  margin-bottom: 4px;
+}
