@@ -23,26 +23,37 @@ export function WikipediaLink({ href, children, previewContent, className = '' }
     const previewWidth = Math.min(700, viewportWidth * 0.9)
     const previewHeight = Math.min(300, viewportHeight * 0.7)
     
+    // Add padding for safe positioning
+    const padding = 20
+    
     // Determine vertical position: if cursor is in top half, show below
     const isTopHalf = cursorY < viewportHeight / 2
     const newSide = isTopHalf ? 'bottom' : 'top'
     
-    // Determine horizontal alignment based on available space
-    // Check if there's enough space to the right for the preview
-    const spaceToRight = viewportWidth - cursorX
-    const spaceToLeft = cursorX
+    // Determine horizontal alignment based on cursor position
+    // For start alignment: preview left edge aligns with trigger left edge
+    // For center alignment: preview center aligns with trigger center  
+    // For end alignment: preview right edge aligns with trigger right edge
+    
+    const triggerRect = (event.target as HTMLElement).getBoundingClientRect()
+    const triggerCenter = triggerRect.left + triggerRect.width / 2
+    const triggerLeft = triggerRect.left
+    const triggerRight = triggerRect.right
     
     let newAlign: 'start' | 'center' | 'end'
     
-    if (spaceToRight >= previewWidth + 20) {
-      // Enough space to the right, align to start (left edge at cursor)
-      newAlign = 'start'
-    } else if (spaceToLeft >= previewWidth + 20) {
-      // Not enough space to right, but enough to left, align to end
-      newAlign = 'end'
-    } else {
-      // Not enough space on either side, center it
+    // Check if centering the preview would keep it in bounds
+    const centeredLeft = triggerCenter - previewWidth / 2
+    const centeredRight = triggerCenter + previewWidth / 2
+    
+    if (centeredLeft >= padding && centeredRight <= viewportWidth - padding) {
       newAlign = 'center'
+    } else if (triggerLeft + previewWidth <= viewportWidth - padding) {
+      // Try start alignment (left edge of trigger)
+      newAlign = 'start'
+    } else {
+      // Use end alignment (right edge of trigger)
+      newAlign = 'end'
     }
     
     setSide(newSide)
@@ -88,7 +99,8 @@ export function WikipediaLink({ href, children, previewContent, className = '' }
         avoidCollisions={true}
         sideOffset={8}
         alignOffset={0}
-        collisionPadding={40}
+        collisionPadding={20}
+        collisionBoundary={typeof window !== 'undefined' ? document.body : undefined}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={handleMouseLeave}
       >
