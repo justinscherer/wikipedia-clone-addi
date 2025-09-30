@@ -41,7 +41,8 @@ export function WikipediaLink({ href, children, previewContent, className = '' }
       <HoverCardContent 
         className="p-0 border-0 shadow-lg" 
         side="top" 
-        align="start"
+        align="center"
+        avoidCollisions={true}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
       >

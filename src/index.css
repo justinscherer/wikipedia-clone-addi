@@ -93,9 +93,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Preview card styles */
 .preview-card {
-  max-width: 500px;
-  max-height: 400px;
-  overflow-y: auto;
+  max-width: min(700px, 90vw);
+  max-height: min(300px, 70vh);
+  overflow: hidden;
   font-size: 14px;
   line-height: 1.5;
 }

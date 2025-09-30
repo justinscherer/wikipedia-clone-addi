@@ -9,7 +9,7 @@ export function FFTPreview() {
   }
 
   return (
-    <div className="w-[700px] h-[300px] bg-card border border-border rounded-lg shadow-lg overflow-hidden">
+    <div className="w-[min(700px,90vw)] h-[min(300px,70vh)] bg-card border border-border rounded-lg shadow-lg overflow-hidden">
       {/* Header */}
       <div className="px-4 py-2 border-b border-border">
         <h3 className="text-lg font-bold">Fast Fourier transform (FFT)</h3>
@@ -18,7 +18,7 @@ export function FFTPreview() {
       {/* Main content - landscape layout */}
       <div className="flex h-[calc(100%-48px)]">
         {/* Left side - Image and introduction */}
-        <div className="w-1/2 p-4 border-r border-border">
+        <div className="w-1/2 p-4 border-r border-border overflow-hidden">
           <p className="text-sm mb-3 leading-relaxed">
             A fast Fourier transform (FFT) is an algorithm that computes the discrete Fourier transform (DFT) of a sequence, or its inverse (IDFT). A Fourier transform converts a signal from its original domain (often time or space) to a representation in the frequency domain and vice versa.
           </p>
@@ -33,19 +33,19 @@ export function FFTPreview() {
         </div>
         
         {/* Right side - Tappable sections */}
-        <div className="w-1/2 p-4 space-y-3">
+        <div className="w-1/2 p-4 space-y-3 overflow-hidden">
           <div 
-            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors h-[calc(50%-6px)]"
+            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors h-[calc(50%-6px)] overflow-hidden"
             onClick={() => openFFTArticle()}
           >
             <h4 className="font-semibold text-sm mb-2 text-primary">Introduction</h4>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Fast Fourier transforms are widely used for applications in engineering, music, science, and mathematics. The basic ideas were popularized in 1965, but some algorithms had been derived as early as 1805. In 1994, Gilbert Strang described the FFT as "the most important numerical algorithm of our lifetime", and it was included in Top 10 Algorithms of 20th Century by the IEEE magazine Computing in Science & Engineering.
+              Fast Fourier transforms are widely used for applications in engineering, music, science, and mathematics. The basic ideas were popularized in 1965, but some algorithms had been derived as early as 1805.
             </p>
           </div>
           
           <div 
-            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors h-[calc(50%-6px)]"
+            className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors h-[calc(50%-6px)] overflow-hidden"
             onClick={() => openFFTArticle('Applications')}
           >
             <h4 className="font-semibold text-sm mb-2 text-primary">Applications</h4>
