@@ -9,7 +9,7 @@ export function FFTPreview() {
   }
 
   return (
-    <div className="w-[min(700px,90vw)] h-[min(300px,70vh)] bg-card border border-border rounded-lg shadow-lg overflow-hidden">
+    <div className="w-[min(700px,calc(100vw-40px))] h-[min(300px,70vh)] bg-card border border-border rounded-lg shadow-lg overflow-hidden">
       {/* Header */}
       <div className="px-4 py-2 border-b border-border">
         <h3 className="text-lg font-bold">Fast Fourier transform (FFT)</h3>
@@ -33,7 +33,7 @@ export function FFTPreview() {
         </div>
         
         {/* Right side - Tappable sections */}
-        <div className="w-1/2 p-4 space-y-3 overflow-hidden">
+        <div className="w-1/2 p-4 space-y-3 overflow-hidden min-w-0">
           <div 
             className="p-3 border border-border rounded cursor-pointer hover:bg-muted transition-colors h-[calc(50%-6px)] overflow-hidden"
             onClick={() => openFFTArticle()}

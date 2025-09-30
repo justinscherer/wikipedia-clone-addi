@@ -43,6 +43,9 @@ export function WikipediaLink({ href, children, previewContent, className = '' }
         side="top" 
         align="center"
         avoidCollisions={true}
+        sideOffset={8}
+        alignOffset={0}
+        collisionPadding={20}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
       >
